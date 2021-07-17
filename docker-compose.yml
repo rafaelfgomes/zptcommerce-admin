@@ -1,0 +1,23 @@
+version: '3.4'
+
+services: 
+
+    site:
+        container_name: zpt-admin
+        volumes: 
+            - ./admin:/app
+        build: 
+            context: .
+            dockerfile: ./docker/node/Dockerfile
+            args: 
+                API_URL: "${API_URL}"
+        ports: 
+            - "8989:8080"
+        networks:
+            default:
+                ipv4_address: 172.25.0.5
+
+networks:
+    default:
+        external: true
+        name: zpt-network
