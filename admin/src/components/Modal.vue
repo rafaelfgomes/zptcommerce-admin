@@ -72,7 +72,7 @@ export default {
 
       this.showAlert = true
 
-      if (!response.status === 200) {
+      if (response.status !== 200) {
         this.errorResponse('Erro ao inativar o produto')
         setTimeout(() => {
           document.getElementById('btn-alert-close').click()
