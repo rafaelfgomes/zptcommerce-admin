@@ -30,6 +30,7 @@
 <script>
 import FormUpdate from './FormUpdate'
 import InfoDelete from './InfoDelete'
+import { apiUrl } from '/config'
 
 export default {
   name: 'Modal',
@@ -61,7 +62,7 @@ export default {
     },
     async deleteProduct() {
       const response = await fetch(
-          `http://0.0.0.0:8085/api/v1/products/${this.product.id}`,
+          `${apiUrl}/products/${this.product.id}`,
           {
             method: 'DELETE',
             headers: {
@@ -91,7 +92,7 @@ export default {
       let formData = new FormData(this.$refs.updateComponent.$refs.formUpdate)
      
       const response = await fetch(
-          `http://0.0.0.0:8085/api/v1/products/${this.product.id}?_method=PUT`,
+          `${apiUrl}/products/${this.product.id}?_method=PUT`,
           {
             method: 'POST',
             body: formData
@@ -126,6 +127,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style />

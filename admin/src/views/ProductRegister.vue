@@ -117,6 +117,7 @@
               type="button"
               @click="storeProduct()"
               class="btn btn-primary btn-register"
+              :class="btnDisabled"
             >
               Cadastrar
             </button>
@@ -135,6 +136,8 @@
 </template>
 
 <script>
+import { apiUrl } from '/config'
+
 export default {
   name: "ProductRegister",
   data () {
@@ -147,9 +150,10 @@ export default {
   },
   methods: {
     async storeProduct() {
+      this.btnDisabled = "disabled";
       let formData = new FormData(this.$refs.formRegister);
 
-      const response = await fetch("http://0.0.0.0:8085/api/v1/products", {
+      const response = await fetch(`${apiUrl}/products`, {
         method: "POST",
         body: formData,
       });
@@ -158,6 +162,7 @@ export default {
 
       if (response.status !== 201) {
         this.errorResponse("Erro ao cadastrar o produto");
+        this.btnDisabled = '';
         setTimeout(() => {
           document.getElementById("btn-alert-close").click();
         }, 5000);
@@ -173,7 +178,6 @@ export default {
     successResponse(message) {
       this.alertText = message;
       this.alertClass = "alert-success";
-      this.btnDisabled = "disabled";
     },
     errorResponse(message) {
       this.alertText = message;

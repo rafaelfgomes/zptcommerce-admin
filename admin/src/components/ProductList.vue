@@ -55,6 +55,7 @@
 <script>
 import Button from './Button'
 import Modal from './Modal'
+import { apiUrl } from '/config'
 
 export default {
   name: "ProductList",
@@ -76,7 +77,7 @@ export default {
   },
   methods: {
     async fetchProducts() {
-      const response = await fetch('http://0.0.0.0:8085/api/v1/products')
+      const response = await fetch(`${apiUrl}/products`)
       const data = await response.json()
       return data
     },
