@@ -20,6 +20,8 @@ docker-compose up -d
 
 Se tudo ocorrer bem, seu projeto já estará rodando e para acessá-lo basta a url (0.0.0.0:8989) no seu navegador
 
+> OBS: Caso sua configuração da api seja diferente da padrão, há um arquivo na raiz da pasta 'admin' chamado [config.js](admin/config.js) que seta a url base da api; basta alterá-lo para a url desejada.
+
 ## 📝 Licença
 
 Esse projeto está sob licença MIT. Veja o arquivo [LICENÇA](LICENSE) para mais detalhes.
